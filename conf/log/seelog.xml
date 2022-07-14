@@ -4,27 +4,28 @@
         <filter levels="trace,debug,info">
             <console formatid="colored-default"/>
             <!-- 将日志输出到磁盘文件，按文件大小进行切割日志，单个文件最大10M，最多99个日志文件 -->
-            <rollingfile formatid="main" type="size" filename="./log/Preliminary/info.log" maxsize="10485760"
+            <rollingfile formatid="main" type="size" filename="./log/service/service.log" maxsize="10485760"
                          maxrolls="99"/>
         </filter>
         <filter levels="warn">
             <console formatid="colored-warn"/>
             <!-- 将日志输出到磁盘文件，按文件大小进行切割日志，单个文件最大10M，最多99个日志文件 -->
-            <rollingfile formatid="main" type="size" filename="./log/Intermediate/warn.log" maxsize="10485760"
+            <rollingfile formatid="main" type="size" filename="./log/service/service.log.wf" maxsize="10485760"
                          maxrolls="99"/>
         </filter>
         <filter levels="error,critical">
             <console formatid="colored-error"/>
             <!-- 将日志输出到磁盘文件，按文件大小进行切割日志，单个文件最大10M，最多99个日志文件 -->
-            <rollingfile formatid="main" type="size" filename="./log/highLevel/error.log" maxsize="10485760"
+            <rollingfile formatid="main" type="size" filename="./log/error/error.log" maxsize="10485760"
                          maxrolls="99"/>
         </filter>
 
     </outputs>
     <formats>
-        <format id="colored-default" format="%Date %Time [%LEV] [%File:%Line] [%Func] %Msg%n" />
-        <format id="colored-warn" format="%Date %Time [%LEV] [%File:%Line] [%Func] %Msg%n" />
-        <format id="colored-error" format="%Date %Time [%LEV] [%File:%Line] [%Func] %Msg%n" />
-        <format id="main" format="%UTCDate %UTCTime - [%LEV] - %RelFile - %Msg%n"/>
+<format id="colored-default"  format="%EscM(38)%Date %Time [%LEV] %File:%Line | %Msg%n%EscM(0)"/>
+        <format id="colored-warn"  format="%EscM(33)%Date %Time [%LEV] %File:%Line | %Msg%n%EscM(0)"/>
+        <format id="colored-error"  format="%EscM(31)%Date %Time [%LEV] %File:%Line | %Msg%n%EscM(0)"/>
+        <format id="main" format="%Date %Time [%LEV] %RelFile:%Line | %Msg%n"/>
+
     </formats>
 </seelog>

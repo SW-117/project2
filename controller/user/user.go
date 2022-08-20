@@ -12,6 +12,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func Test(c *gin.Context) {
+	resData := &library.ResData{}
+
+	content := &library.ResContent{
+		User: "hi,world",
+	}
+
+	resData = library.ResJson(0, "", content)
+	c.JSON(http.StatusOK, resData)
+	return
+
+}
 func RegisteruUser(c *gin.Context) {
 	resData := &library.ResData{}
 
